@@ -42,6 +42,10 @@
     display: none;
 }
 
+#react-root ._jjqj5{
+    right: 16px !important;
+}
+
 ::-webkit-scrollbar { 
     display: none !important;
  }

@@ -11,10 +11,11 @@ let win
 
 
 function createWindow() { 
+    const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
     var screenElectron = electron.screen 
-    
-    var x_position = (screenElectron.width - 400)
-    var y_position = (screenElectron.height - 820)/2
+
+    var x_position = (width - 380)
+    var y_position = (height - 780)/2
 
    win = new BrowserWindow({
        width: 400, 
