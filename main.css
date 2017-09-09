@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+#react-root{
+    font-family: 'Lato', sans-serif !important;
+}
+
+#react-root ._s5vm9{
+    display: none !important;
+}
+
+#react-root ._t5j1g{
+    border: none !important;
+}
+
+#react-root ._2v79o{
+    background-color: #fff !important;
+}
+
+#react-root ._52qm9{
+    display: none;
+    height: 0px;
+    padding: 0px;
+}
+
+#react-root ._l4k34{
+    display: none;
+}
+
+#react-root ._c05qa{
+    display: none;
+}
+
+#react-root ._sq5zx::before{
+    display: none;
+}
+
+#react-root ._sq5zx{
+    -webkit-app-region: drag;
+}
+
+#react-root ._hqhuc{
+    display: none;
+}
+
+::-webkit-scrollbar { 
+    display: none !important;
+ }
