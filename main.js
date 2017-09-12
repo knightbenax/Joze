@@ -1,18 +1,18 @@
-const {app, BrowserWindow} = require('electron') 
+const {app, BrowserWindow, globalShortcut} = require('electron') 
 const url = require('url') 
 const fs = require('fs')
 const path = require('path')  
 const electron = require('electron')
+const {systemPreferences} = require('electron')
+//const globalShortcut = require('electron')
 
 
 
 let win  
 
-
-
 function createWindow() { 
     const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
-    var screenElectron = electron.screen 
+    var screenElectron = electron.screen
 
     var x_position = (width - 380)
     var y_position = (height - 780)/2
@@ -34,6 +34,8 @@ function createWindow() {
        show:false,
        title: 'Joze'
     }) 
+
+    
     
    win.loadURL('http://instagram.com'
     /*url.format ({ 
@@ -47,12 +49,22 @@ function createWindow() {
         if(!error){
             var formatedData = data.replace(/\s{2,10}/g, ' ').trim()
             win.webContents.insertCSS(formatedData)
+            
+            //win.webContents.executeJavaScript("var a = document.createElement('a');a.innerHTML = '<a>Go Back</a>';document.querySelectorAll('._sq5zx')[0].appendChild(a)")
+            //win.webContents.executeJavaScript("document.querySelectorAll('._sq5zx')[0].appendChild()")
+            //win.webContents.executeJavaScript("$('._sq5zx').append('<a>Go Back</a>')")
         }
     })
    })
 
+   /*win.webContents.on('did-navigate-in-page', function() {
+    win.webContents.executeJavaScript("var a = document.createElement('a');a.innerHTML = '<a>Go Back</a>';document.querySelectorAll('._sq5zx')[0].appendChild(a)") 
+   })*/
+  
+
    win.once('ready-to-show', () => {
     win.show()
+    console.log(systemPreferences.isDarkMode())
   })
 
   win.on('app-command', (e, cmd) => {
@@ -62,14 +74,29 @@ function createWindow() {
     }
   })
 
-  win.on('swipe', (e, direction) => {
+  win.on('swipe', (event, direction) => {
     // Navigate the window back when the user hits their mouse back button
       //if (direction == "left"){
+        console.log("balls")
         win.webContents.goBack()
       //}
   })
+
+  win.on('swipe', function (){
+    console.log("balls")
+  })
+
+  globalShortcut.register('CommandOrControl+K', function(){
+    win.webContents.goBack()
+  });
 }  
 
 //app.dock.setBadge('Joze - Instagram Desktop Client')
+app.commandLine.appendSwitch('--enable-touch-events')
 
 app.on('ready', createWindow) 
+
+app.on('mainWindow-all-closed', function() {
+  if (process.platform != 'darwin')
+    app.quit();
+});
