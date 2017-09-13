@@ -5,9 +5,7 @@
   "scripts": {
     "start": "electron ."
   },
-  "devDependencies": {
-    "electron-prebuilt": "^1.4.13"
-  },
+  "devDependencies": {},
   "dependencies": {
     "jquery": "^3.2.1"
   }

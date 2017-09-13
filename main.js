@@ -64,7 +64,9 @@ function createWindow() {
 
    win.once('ready-to-show', () => {
     win.show()
-    console.log(systemPreferences.isDarkMode())
+    console.log(systemPreferences.isSwipeTrackingFromScrollEventsEnabled())
+    console.log(process.versions.electron)
+    console.log(process.versions.chrome)
   })
 
   win.on('app-command', (e, cmd) => {
@@ -84,6 +86,7 @@ function createWindow() {
 
   win.on('swipe', function (){
     console.log("balls")
+    
   })
 
   globalShortcut.register('CommandOrControl+K', function(){
